@@ -1,0 +1,80 @@
+﻿@model IEnumerable<ToDoWebApplication.Models.ToDo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center text-info">To Do's List</h1>
+            <hr />
+        </div>
+    </div>
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-md-10">
+            <a asp-action="Create" class="btn btn-outline-success btn-sm">Create New</a>
+        </div>
+    </div>
+    <div class="row mt-2 d-flex align-items-center justify-content-center">
+        <div class="col-md-10">
+            @if (Model.Count() > 0)
+            {
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Title)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Board)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Status)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Created)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Updated)
+                            </th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Title)
+                                </td>
+                                 <td>
+                                    @Html.DisplayFor(modelItem => item.Board.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Created)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Updated)
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success btn-sm">Update</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div class="alert alert-warning" role="alert">
+                    No To Do's found. You need to add one.
+                </div>
+            }
+        </div>
+    </div>
+</div>
