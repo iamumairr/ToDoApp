@@ -1,5 +1,5 @@
-# ToDoWebApplication-AspNetCore
-A basic to do web application using Asp.net Core (.Net 6)
+# To Do Web Application
+A basic To Do web application using Asp.net Core (.Net 6)
 
 Want to run on your system?
 1. set data source in appsettings.json
